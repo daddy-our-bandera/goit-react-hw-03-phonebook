@@ -7,7 +7,21 @@ class AddForm extends Component {
     name: '',
     number: '',
   };
+  componentDidMount() {
+    const savedData = JSON.parse(localStorage.getItem('save_phonebook'));
+    if (savedData) {
+      this.setState({ contacts: savedData });
+    }
+  }
 
+  componentDidUpdate(_, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem(
+        'save_phonebook',
+        JSON.stringify(this.state.contacts)
+      );
+    }
+  }
   handleChange = evt => {
     const { name, value } = evt.currentTarget;
 
