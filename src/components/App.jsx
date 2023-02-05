@@ -72,8 +72,8 @@ class App extends Component {
 
   render() {
     const { filter } = this.state;
-
     const visibleContacts = this.showContacts();
+
     return (
       <div>
         <Section>
@@ -84,7 +84,7 @@ class App extends Component {
         <Section>
           <h2>Contacts</h2>
 
-          {this.showContacts().length > 0 || filter ? (
+          {visibleContacts.length > 0 || filter ? (
             <Filter value={filter} onChange={this.filterChange} />
           ) : (
             <div>
