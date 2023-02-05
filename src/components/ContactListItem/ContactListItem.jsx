@@ -3,7 +3,7 @@ import { ContactItem } from './ContactListItem.styled';
 
 export const Item = ({ id, name, number, deleteContact }) => {
   return (
-    <ContactItem id={id}>
+    <ContactItem>
       <span>
         {name} : {number}
       </span>
