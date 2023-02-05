@@ -16,6 +16,7 @@ class App extends Component {
     ],
     filter: '',
   };
+
   componentDidMount() {
     const savedData = JSON.parse(localStorage.getItem('phonebook'));
     if (savedData) {
@@ -24,9 +25,8 @@ class App extends Component {
   }
 
   componentDidUpdate(_, prevState) {
-    const { contacts } = this.state;
-    if (contacts !== prevState.contacts) {
-      localStorage.setItem('phonebook', JSON.stringify(contacts));
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('phonebook', JSON.stringify(this.state.contacts));
     }
   }
 
