@@ -17,10 +17,9 @@ class AddForm extends Component {
   handleSubmit = evt => {
     evt.preventDefault();
     this.props.onSubmit(this.state);
-  };
-  reset = () => {
     this.setState({ name: '', number: '' });
   };
+
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>

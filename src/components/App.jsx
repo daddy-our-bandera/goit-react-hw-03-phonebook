@@ -16,7 +16,18 @@ class App extends Component {
     ],
     filter: '',
   };
+  componentDidMount() {
+    const savedData = JSON.parse(localStorage.getItem('phonebook'));
+    if (savedData) {
+      this.setState({ contacts: savedData });
+    }
+  }
 
+  componentDidUpdate(_, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('phonebook', JSON.stringify(this.state.contacts));
+    }
+  }
   addContact = data => {
     const { contacts } = this.state;
 
@@ -59,6 +70,7 @@ class App extends Component {
 
   render() {
     const visibleContacts = this.showContacts();
+    const { filter } = this.state.filter;
     return (
       <div>
         <Section>
@@ -68,7 +80,13 @@ class App extends Component {
 
         <Section>
           <h2>Contacts</h2>
-          <Filter value={this.state.filter} onChange={this.filterChange} />
+
+          {visibleContacts.length > 0 || filter ? (
+            <Filter value={filter} onChange={this.filterChange} />
+          ) : (
+            <h2>No contacts added</h2>
+          )}
+
           <ContactList
             contacts={visibleContacts}
             deleteContact={this.deleteContact}

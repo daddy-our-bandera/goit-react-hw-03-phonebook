@@ -3,7 +3,7 @@ import { ContactItem } from './ContactListItem.styled';
 
 export const Item = ({ id, name, number, deleteContact }) => {
   return (
-    <ContactItem id={id}>
+    <ContactItem>
       <span>
         {name} : {number}
       </span>
@@ -15,7 +15,7 @@ export const Item = ({ id, name, number, deleteContact }) => {
   );
 };
 
-ContactItem.propTypes = {
+Item.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
