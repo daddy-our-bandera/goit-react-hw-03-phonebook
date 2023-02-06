@@ -17,7 +17,6 @@ class App extends Component {
     filter: '',
   };
 
-  componentDidMount() {
     const savedData = JSON.parse(localStorage.getItem('phonebook'));
     if (savedData) {
       this.setState({ contacts: savedData });
