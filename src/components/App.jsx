@@ -70,7 +70,7 @@ class App extends Component {
 
   render() {
     const visibleContacts = this.showContacts();
-    const { filter } = this.state.filter;
+    const { filter } = this.state;
     return (
       <div>
         <Section>
@@ -84,7 +84,7 @@ class App extends Component {
           {visibleContacts.length > 0 || filter ? (
             <Filter value={filter} onChange={this.filterChange} />
           ) : (
-            <h2>No contacts added</h2>
+            <h1>No contacts added</h1>
           )}
 
           <ContactList
